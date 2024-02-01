@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import validator from "validator";
 import Button from "../components/Button";
 import { FcGoogle } from "react-icons/fc";
@@ -10,6 +10,8 @@ const LoginSignUp = () => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     setLoading(true);
@@ -112,7 +114,10 @@ const LoginSignUp = () => {
           />
           <div className="w-full flex flex-col sm:flex-row justify-center items-center gap-2 mt-4 sm:mt-2">
             <p>Not yet registered?</p>
-            <p className=" text-blue-800 font-semibold cursor-pointer">
+            <p
+              onClick={() => navigate("/sign-up")}
+              className=" text-blue-800 font-semibold cursor-pointer"
+            >
               Create an Account 💁
             </p>
           </div>
